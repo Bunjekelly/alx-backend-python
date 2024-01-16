@@ -13,6 +13,9 @@ async_comprehension = __import__("1-async_comprehension").async_comprehension
 async def measure_runtime() -> float:
     """coroutine definition"""
     start = time.perf_counter()
-    await asyncio.gather(*(async_comprehension() for _ in range(4)))
+    list1 = []
+    for i in range(4):
+        list1.append(async_comprehension())
+    await asyncio.gather(*list1)
     end = time.perf_counter()
-    return start - end
+    return end - start
