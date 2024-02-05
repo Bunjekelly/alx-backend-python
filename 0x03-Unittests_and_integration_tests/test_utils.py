@@ -9,6 +9,7 @@ from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
+    """a TestAccessNestedMap class that inherits from unittest.TestCase."""
 
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
@@ -16,10 +17,15 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map, path, expected_output):
+        """the TestAccessNestedMap.test_access_nested_map method t
+        test that the method returns what it is supposed to"""
         self.assertEqual(access_nested_map(nested_map, path), expected_output)
 
 
 class TestGetJson(unittest.TestCase):
+    """the TestGetJson(unittest.TestCase) class and implement
+    the TestGetJson.test_get_json method to test that utils.get_json
+    returns the expected result"""
 
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
@@ -27,6 +33,8 @@ class TestGetJson(unittest.TestCase):
     ])
     @patch('requests.get')
     def test_get_json(self, test_url, test_payload, mock_get):
+        """the TestGetJson.test_get_json method to test that utils.get_json
+        returns the expected result"""
         mock_get.return_value = Mock(json=lambda: test_payload)
 
         response = get_json(test_url)
@@ -36,8 +44,9 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-
+    """the TestMemoize(unittest.TestCase) class with a test_memoize method"""
     def test_memoize(self):
+        """ defining a a function used to test memoize module"""
 
         class TestClass:
             def a_method(self):
