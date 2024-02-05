@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+
+"""a module that tests the Github client function"""
+
 import unittest
 from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
